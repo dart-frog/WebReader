@@ -21,13 +21,18 @@ public class Splitter {
 		return sorted;
 	}*/
 	public static List<String> split (String x){
-		String sorted;
+		List<String> sorted = new ArrayList<String>();
 		for (int i = 0; i < x.length(); i++){
 			if (x.charAt(i) == '<'){
-				String y = x.substring(x.charAt(i), x.indexOf('>'));
-				sorted.x.replace(y, "");
+				String y = x.substring(i, x.indexOf('>') +1);
+				x = x.replace(y, "");
 			}
 		}
+		String[] pre = x.split(" ");
+		for (int i = 0; i < pre.length; i++){
+			sorted.add(pre[i]);
+		}
+		return sorted;
 	}
 	
 
