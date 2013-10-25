@@ -24,6 +24,18 @@ public class MyHashMap {
 		myHashMap[bin].add(x);
 		x.getValue();
 	}
+	public void change(String key, String newValue){
+		int bin = (key.length()*key.charAt(0)) % 9;
+		List<KeyValuePairs> l = myHashMap[bin];
+		int i = 0;
+		while(i < l.size()){
+		String myX =l.get(i).getKey();
+			if (myX.equals(key)){
+				l.get(i).setValue(newValue);
+			}
+			i++;
+		}
+	}
 	/**
 	 * Returns the value of a given key
 	 * @param key is the value you are looking for 

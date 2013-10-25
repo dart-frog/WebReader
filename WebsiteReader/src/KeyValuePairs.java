@@ -12,4 +12,7 @@ public class KeyValuePairs {
 	public String getKey(){
 		return key; 
 	}
+	public void setValue(String newValue){
+		value = newValue;
+	}
 }
