@@ -9,10 +9,17 @@ public class WordCounter {
 	 * @param args
 	 */
 	public static MyHashMap reader(ArrayList<String> list, MyHashMap write) {
+		String old = "";
+		int noon = 0;
 		for (int i = 0; i < list.size(); i++){
 			if(write.exists(list.get(i))){
-				String old = write.get(list.get(i));
-				int noon = Integer.parseInt(old);
+				try {
+					old = write.get(list.get(i));
+					noon = Integer.parseInt(old);
+				} catch(NumberFormatException e) {
+					System.out.println("\"" + list.get(i) + "\"");
+					throw e;
+				}
 				noon++;
 				write.change(list.get(i), Integer.toString(noon));
 			}

@@ -22,14 +22,16 @@ public class Splitter {
 	}*/
 	public static List<String> split (String x){
 		List<String> sorted = new ArrayList<String>();
+		boolean inBody = false;
+		int d = 0;
+		while ( !(x.charAt(d) == '<' &&  x.charAt(d +1) == 'b' && x.charAt(d+2) == 'o' && x.charAt(d+3) == 'd' && x.charAt(d+4) == 'y' && x.charAt(d+5) == '>')){
+			d++;
+		}
+		x = x.substring(d , x.length()-1);
 		for (int i = 0; i < x.length(); i++){
+			
 			if (x.charAt(i) == '<'){
 				String y = x.substring(i, x.indexOf('>',i) +1);
-				x = x.replace(y, "");
-				i=-1;
-			}
-			else if (x.charAt(i) == ':'){
-				String y = x.substring(i-1, x.indexOf(',',i) +1);
 				x = x.replace(y, "");
 				i=-1;
 			}
