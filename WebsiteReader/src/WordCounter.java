@@ -8,8 +8,7 @@ public class WordCounter {
 	/**
 	 * @param args
 	 */
-	public static MyHashMap reader(ArrayList<String> list) {
-		MyHashMap write = new MyHashMap(10);
+	public static MyHashMap reader(ArrayList<String> list, MyHashMap write) {
 		for (int i = 0; i < list.size(); i++){
 			if(write.exists(list.get(i))){
 				String old = write.get(list.get(i));

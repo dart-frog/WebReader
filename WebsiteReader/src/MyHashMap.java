@@ -19,13 +19,13 @@ public class MyHashMap {
 	 * @param value sets the value of the KeyValuePair
 	*/
 	public void set(String key, String value){
-		int bin = (key.length()*key.charAt(0)) % (myHashMap.length - 1);
+		int bin = (key.length()) % (myHashMap.length - 1);
 		KeyValuePairs x = new KeyValuePairs(key,value);
 		myHashMap[bin].add(x);
 		x.getValue();
 	}
 	public void change(String key, String newValue){
-		int bin = (key.length()*key.charAt(0)) % 9;
+		int bin = key.length() % 9;
 		List<KeyValuePairs> l = myHashMap[bin];
 		int i = 0;
 		while(i < l.size()){
@@ -42,7 +42,7 @@ public class MyHashMap {
 	 * @return the value connected with the key or null if it is not found
 	 */
 	public String get(String key){
-		int bin = (key.length()*key.charAt(0)) % 9;
+		int bin = key.length() % 9;
 		List<KeyValuePairs> l = myHashMap[bin];
 		int i = 0;
 		while(i < l.size()){

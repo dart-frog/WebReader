@@ -24,8 +24,14 @@ public class Splitter {
 		List<String> sorted = new ArrayList<String>();
 		for (int i = 0; i < x.length(); i++){
 			if (x.charAt(i) == '<'){
-				String y = x.substring(i, x.indexOf('>') +1);
+				String y = x.substring(i, x.indexOf('>',i) +1);
 				x = x.replace(y, "");
+				i=-1;
+			}
+			else if (x.charAt(i) == ':'){
+				String y = x.substring(i-1, x.indexOf(',',i) +1);
+				x = x.replace(y, "");
+				i=-1;
 			}
 		}
 		String[] pre = x.split(" ");
