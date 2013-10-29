@@ -22,12 +22,11 @@ public class Splitter {
 	}*/
 	public static List<String> split (String x){
 		List<String> sorted = new ArrayList<String>();
-		boolean inBody = false;
 		int d = 0;
-		while ( !(x.charAt(d) == '<' &&  x.charAt(d +1) == 'b' && x.charAt(d+2) == 'o' && x.charAt(d+3) == 'd' && x.charAt(d+4) == 'y' && x.charAt(d+5) == '>')){
+		while ( !(x.substring(d, d+4).equals("body"))){
 			d++;
 		}
-		x = x.substring(d , x.length()-1);
+		x = x.substring(d-1);
 		for (int i = 0; i < x.length(); i++){
 			
 			if (x.charAt(i) == '<'){

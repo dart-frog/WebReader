@@ -23,7 +23,7 @@ public class Screen {
 	
 	public static void setUp() throws IOException{
 		///get a website 
-		URL given = new URL("http://en.wikipedia.org/wiki/Civ_5");
+		URL given = new URL("http://en.wikipedia.org/wiki/Magallu");
 	        BufferedReader in = new BufferedReader(
 	        new InputStreamReader(given.openStream()));
 
