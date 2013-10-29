@@ -26,7 +26,12 @@ public class Splitter {
 		while ( !(x.substring(d, d+4).equals("body"))){
 			d++;
 		}
-		x = x.substring(d-1);
+		x = x.substring(d+4);
+		if (x.charAt(d+5) == '{'){
+			String y = x.substring(d+5, x.indexOf('}') +1);
+			x = x.replace(y, "");
+			
+		}
 		for (int i = 0; i < x.length(); i++){
 			
 			if (x.charAt(i) == '<'){

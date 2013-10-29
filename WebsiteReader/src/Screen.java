@@ -14,7 +14,7 @@ import javax.swing.text.ComponentView;
 import javax.swing.text.JTextComponent;
 public class Screen {
 	
-	public static int MAXCHAR = 100;
+	public static int MAXCHAR = 10;
 	
 	public static void main(String[] args) throws Exception {
 
@@ -46,7 +46,7 @@ public class Screen {
 	        t = WordCounter.reader(fixedText,t);
 	        
 	        StringBuilder resort = new StringBuilder();
-	       
+	        
 	        ArrayList<String> allList = (ArrayList<String>) t.getKeys();
 	        int far = 0;
 	        for (int i = 0; i < t.size(); i++){
@@ -83,7 +83,7 @@ public class Screen {
 		p.add(BorderLayout.NORTH, areaScrollPane);
 
 		
-		
+		/*
 		ArrayList<String> keys = (ArrayList<String>) t.getKeys();
 		int formalSize = 0;
 		Box hBox = Box.createHorizontalBox();
@@ -113,7 +113,7 @@ public class Screen {
 		}
 		//p.add(BorderLayout.EAST,hBox);
 		
-		
+		*/
 		
 		frame.add(p);
 		frame.pack();       
