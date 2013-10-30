@@ -24,13 +24,37 @@ public class WordCounter {
 				write.change(list.get(i), Integer.toString(noon));
 			}
 			else{
+				if(isLegit(list.get(i))){ 
 				write.set(list.get(i), "1");
+				}
 			}
 		}
 		return write;
 		
 		
 
+	}
+	public static boolean isLegit(String input){
+		char[] nums = {'0','1','2','3','4','5','6','7','8','9'};
+		for	(int j = 0; j< input.length(); j++){
+			for (int i = 0; i< nums.length; i++){
+				if (input.charAt(j) == nums[i]){
+					return false;
+				}
+				
+			}
+		}
+		if (input.equals("-")){
+			return false;
+		}
+		if (input.length() > 5){
+			if (input.substring(0, 4).equals("Links")){
+				return false;
+			}
+		}
+		
+		return true;
+		
 	}
 
 }

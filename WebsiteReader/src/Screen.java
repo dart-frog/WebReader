@@ -53,9 +53,10 @@ public class Screen {
 	        	for (int j = 0; j < t.bucketSize(i); j++){
 	        		String myWord;
 	        		String myValue;
-	        		myWord = allList.get(far);
+	        		myWord = format(allList.get(far));
 	        		myValue = t.get(myWord);
 	        		resort.append(myWord + " " + myValue + "\n");
+	        		far++;
 	        	}
 	        }
 	        String finalSort = resort.toString();
@@ -68,7 +69,7 @@ public class Screen {
 	        textArea.setWrapStyleWord(true);
 	        JScrollPane areaScrollPane = new JScrollPane(textArea);
 	        areaScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);   
-	        areaScrollPane.setPreferredSize(new Dimension(250, 250));
+	        areaScrollPane.setPreferredSize(new Dimension(400, 600));
 	        
 	        	
 		
@@ -112,8 +113,8 @@ public class Screen {
 			p.add(BorderLayout.NORTH, vBox);
 		}
 		//p.add(BorderLayout.EAST,hBox);
-		
 		*/
+		
 		
 		frame.add(p);
 		frame.pack();       
@@ -121,7 +122,11 @@ public class Screen {
 		
 
 	}
-	public static void display(){
-		
+	public static String format(String rough){
+		rough = rough.replace(" ","");
+		rough = rough.replace("\"", "");
+		rough = rough.replace("(", "");
+		rough = rough.replace(")", "");
+		return rough;
 	}
 }
