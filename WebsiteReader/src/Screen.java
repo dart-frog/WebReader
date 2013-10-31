@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,9 +22,9 @@ public class Screen {
         setUp();
     }
 	
-	public static void setUp() throws IOException{
+	public static void setUp() {
 		///get a website 
-		URL given = new URL("http://en.wikipedia.org/wiki/Magallu");
+		
 	        BufferedReader in = new BufferedReader(
 	        new InputStreamReader(given.openStream()));
 
@@ -128,5 +129,11 @@ public class Screen {
 		rough = rough.replace("(", "");
 		rough = rough.replace(")", "");
 		return rough;
+	}
+	public static URL getURL(String url)throws MalformedURLException{
+		
+			URL given = new URL(url);
+		
+		return given;
 	}
 }
