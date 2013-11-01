@@ -16,17 +16,35 @@ import javax.swing.text.JTextComponent;
 public class Screen {
 	
 	public static int MAXCHAR = 10;
+	private static String URLstring = "";
 	
 	public static void main(String[] args) throws Exception {
 
         setUp();
     }
-	
-	public static void setUp() {
-		///get a website 
+	public static void setUp(){
+		JFrame frame = new JFrame("TopLevelDemo");       
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		Screen allMyStuff = new Screen();
+		allMyStuff.
+		
+		
+		frame.add(p);
+		frame.pack();       
+		frame.setVisible(true);
+	}
+	
+	public Screen() throws IOException {
+		///get a website 
+			URL z = null;
+			try {
+				z = new URL(URLstring);
+			} catch (MalformedURLException e) {
+				
+			}
 	        BufferedReader in = new BufferedReader(
-	        new InputStreamReader(given.openStream()));
+	        new InputStreamReader(z.openStream()));
 
 	        StringBuilder massive  = new StringBuilder();
 	       
@@ -64,6 +82,8 @@ public class Screen {
 	        
 	        
 	        
+	        JPanel p = new JPanel();
+	        
 	        JTextArea textArea = new JTextArea(finalSort); 	
 	        textArea.setFont(new Font("Serif", Font.ITALIC, 16));
 	        textArea.setLineWrap(true);
@@ -78,12 +98,20 @@ public class Screen {
 		
 		
 		
-		JFrame frame = new JFrame("TopLevelDemo");       
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JPanel p = new JPanel();
+		
 		
 		p.add(BorderLayout.NORTH, areaScrollPane);
 
+		JTextArea inputText = new JTextArea();
+		textArea.setFont(new Font("Serif", Font.ITALIC, 16));
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        
+        JButton enter = new JButton("enter");
+        enter.setMnemonic(KeyEvent.VK_E);
+        SubmitButtonActionListener v = new SubmitButtonActionListener(inputText, this); 
+        enter.addActionListener(v);
+		
 		
 		/*
 		ArrayList<String> keys = (ArrayList<String>) t.getKeys();
@@ -117,9 +145,7 @@ public class Screen {
 		*/
 		
 		
-		frame.add(p);
-		frame.pack();       
-		frame.setVisible(true);
+		
 		
 
 	}
@@ -130,10 +156,7 @@ public class Screen {
 		rough = rough.replace(")", "");
 		return rough;
 	}
-	public static URL getURL(String url)throws MalformedURLException{
-		
-			URL given = new URL(url);
-		
-		return given;
+	public static void getURL(String url)throws MalformedURLException{
+		URLstring = url;
 	}
 }
