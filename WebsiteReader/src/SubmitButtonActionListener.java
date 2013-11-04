@@ -7,20 +7,12 @@ import javax.swing.JTextField;
 
 
 public class SubmitButtonActionListener implements ActionListener{
-	private JTextField jt;
-	private Screen scr;
 	
-	public SubmitButtonActionListener(JTextArea inputText, Screen y){
-		jt =inputText;
-		scr = y;
-	}
-
-
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String x = jt.getText();
+		String txt = Screen.inputText.getText();
 		try {
-			scr.getURL(x);
+			Screen.setURL(txt);
 		} catch (MalformedURLException e) {
 			
 		}
