@@ -9,9 +9,17 @@ import javax.swing.JTextField;
 
 public class SubmitButtonActionListener implements ActionListener{
 	
+	private JTextField inputText;
+	
+	public SubmitButtonActionListener(JTextField inputText)
+	{
+		this.inputText = inputText;
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String txt = Screen.inputText.getText();
+		String txt = inputText.getText();
+		
 		try {
 			Screen.setURL(txt);
 		} catch (MalformedURLException e) {
