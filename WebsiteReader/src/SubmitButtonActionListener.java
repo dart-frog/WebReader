@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.MalformedURLException;
 
 import javax.swing.JTextArea;
@@ -15,6 +16,9 @@ public class SubmitButtonActionListener implements ActionListener{
 			Screen.setURL(txt);
 		} catch (MalformedURLException e) {
 			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
