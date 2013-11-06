@@ -54,15 +54,7 @@ public class Screen {
 		
 		
 		try{
-		String finalSort =  parse(buff());
-		wordFrequencyTextArea = new JTextArea(finalSort);
-		wordFrequencyTextArea.setFont(new Font("Serif", Font.ITALIC, 16));
-		wordFrequencyTextArea.setLineWrap(true);
-		wordFrequencyTextArea.setWrapStyleWord(true);
-		JScrollPane textAreaScrollPane = new JScrollPane(wordFrequencyTextArea);
-		textAreaScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		textAreaScrollPane.setPreferredSize(new Dimension(400, 600));
-		//populatedCard.add(textAreaScrollPane);
+		
 		}
 		catch(Exception e){
 			createErrorLabel(e.getMessage());
@@ -120,6 +112,7 @@ public class Screen {
 
 	public static void setURL(String url) throws IOException {
 			z = new URL(URLstring);
+			
 	}
 	public static BufferedReader buff() throws IOException{
 		BufferedReader in;
@@ -140,6 +133,7 @@ public class Screen {
 		ArrayList<String> fixedText = new ArrayList<String>();
 		fixedText = (ArrayList<String>) Splitter.split(massiveString);
 		t = WordCounter.reader(fixedText, t);
+		//x = BubbleSort.sort(t.getKeyValuePairs());
 
 		StringBuilder resort = new StringBuilder();
 
@@ -162,5 +156,22 @@ public class Screen {
 	public void createErrorLabel(String e){
 		JLabel x = new JLabel(e);
 		contentPane.add(x);
+	}
+	public void action () {
+		String finalSort;
+		try {
+			finalSort = parse(buff());
+		} catch (IOException e) {
+			//createErrorLabel(e);
+			
+		}
+		wordFrequencyTextArea = new JTextArea(finalSort);
+		wordFrequencyTextArea.setFont(new Font("Serif", Font.ITALIC, 16));
+		wordFrequencyTextArea.setLineWrap(true);
+		wordFrequencyTextArea.setWrapStyleWord(true);
+		JScrollPane textAreaScrollPane = new JScrollPane(wordFrequencyTextArea);
+		textAreaScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		textAreaScrollPane.setPreferredSize(new Dimension(400, 600));
+		//populatedCard.add(textAreaScrollPane);
 	}
 }

@@ -42,6 +42,16 @@ public class MyHashMap {
 	 * @param key is the value you are looking for 
 	 * @return the value connected with the key or null if it is not found
 	 */
+	public ArrayList<KeyValuePairs> getKeyValuePairs() {
+		ArrayList<KeyValuePairs> xList = new ArrayList<KeyValuePairs>();
+		for (int i = 0; i < myHashMap.length; i++) {
+			for (int y = 0; y < myHashMap[i].size(); y++) {
+				xList.add(myHashMap[i].get(y));
+			}
+		}
+		return xList;
+	}
+	
 	public String get(String key){
 		int bin = hash(key), n=0;
 		List<KeyValuePairs> l = myHashMap[bin];
