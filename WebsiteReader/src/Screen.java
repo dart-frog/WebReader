@@ -42,7 +42,7 @@ public class Screen {
 		inputPanel.add(inputTextField);
 
 		JButton enter = new JButton("enter");
-		SubmitButtonActionListener v = new SubmitButtonActionListener(this.inputTextField);
+		SubmitButtonActionListener v = new SubmitButtonActionListener(this.inputTextField, this);
 		enter.addActionListener(v);
 		inputPanel.add(enter);
 
@@ -54,7 +54,6 @@ public class Screen {
 		
 		
 		try{
-		
 		}
 		catch(Exception e){
 			createErrorLabel(e.getMessage());
@@ -110,8 +109,8 @@ public class Screen {
 		return rough;
 	}
 
-	public static void setURL(String url) throws IOException {
-			z = new URL(URLstring);
+	public static void setURL(String url) throws MalformedURLException {	
+		z = new URL(URLstring);
 			
 	}
 	public static BufferedReader buff() throws IOException{
@@ -128,13 +127,20 @@ public class Screen {
 		b.close();
 
 		String massiveString = massive.toString();
-		MyHashMap t = new MyHashMap(MAXCHAR);
+		MyHashMap w = new MyHashMap(MAXCHAR);
 
 		ArrayList<String> fixedText = new ArrayList<String>();
 		fixedText = (ArrayList<String>) Splitter.split(massiveString);
-		t = WordCounter.reader(fixedText, t);
-		//x = BubbleSort.sort(t.getKeyValuePairs());
-
+		w = WordCounter.reader(fixedText, w);
+		ArrayList<KeyValuePairs> x = (ArrayList<KeyValuePairs>) BubbleSort.sort(w.getKeyValuePairs());
+		MyHashMap t = new MyHashMap(MAXCHAR);
+		for (int i = 0; i < x.size(); i++){
+			String key = x.get(i).getKey();
+			String value = x.get(i).getValue();
+			t.set(key,value);
+		}
+		
+		
 		StringBuilder resort = new StringBuilder();
 
 		ArrayList<String> allList = (ArrayList<String>) t.getKeys();
@@ -157,12 +163,13 @@ public class Screen {
 		JLabel x = new JLabel(e);
 		contentPane.add(x);
 	}
-	public void action () {
-		String finalSort;
+	public void action() {
+		String finalSort = null;
 		try {
 			finalSort = parse(buff());
 		} catch (IOException e) {
-			//createErrorLabel(e);
+			String q = e.getMessage();
+			createErrorLabel(q);
 			
 		}
 		wordFrequencyTextArea = new JTextArea(finalSort);
@@ -172,6 +179,6 @@ public class Screen {
 		JScrollPane textAreaScrollPane = new JScrollPane(wordFrequencyTextArea);
 		textAreaScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		textAreaScrollPane.setPreferredSize(new Dimension(400, 600));
-		//populatedCard.add(textAreaScrollPane);
+		contentPane.add(textAreaScrollPane);
 	}
 }

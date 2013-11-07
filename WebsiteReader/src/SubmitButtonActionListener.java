@@ -10,10 +10,12 @@ import javax.swing.JTextField;
 public class SubmitButtonActionListener implements ActionListener{
 	
 	private JTextField inputText;
+	private Screen scr;
 	
-	public SubmitButtonActionListener(JTextField inputText)
+	public SubmitButtonActionListener(JTextField inputText, Screen scr)
 	{
 		this.inputText = inputText;
+		this.scr = scr;
 	}
 	
 	@Override
@@ -22,7 +24,12 @@ public class SubmitButtonActionListener implements ActionListener{
 		
 		try {
 			Screen.setURL(txt);
+			scr.action();
 		} catch (MalformedURLException e) {
+			String x = e.getMessage();
+			scr.createErrorLabel(x);
+			System.out.println(txt);
+			e.printStackTrace();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
