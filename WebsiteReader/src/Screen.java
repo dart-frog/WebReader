@@ -110,6 +110,7 @@ public class Screen {
 	}
 
 	public static void setURL(String url) throws MalformedURLException {	
+		URLstring = url;
 		z = new URL(URLstring);
 			
 	}
@@ -128,10 +129,10 @@ public class Screen {
 
 		String massiveString = massive.toString();
 		MyHashMap w = new MyHashMap(MAXCHAR);
-
 		ArrayList<String> fixedText = new ArrayList<String>();
 		fixedText = (ArrayList<String>) Splitter.split(massiveString);
 		w = WordCounter.reader(fixedText, w);
+		
 		ArrayList<KeyValuePairs> x = (ArrayList<KeyValuePairs>) BubbleSort.sort(w.getKeyValuePairs());
 		MyHashMap t = new MyHashMap(MAXCHAR);
 		for (int i = 0; i < x.size(); i++){
