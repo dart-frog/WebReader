@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -102,10 +103,16 @@ public class Screen {
 	}
 
 	public static String format(String rough) {
-		rough = rough.replace(" ", "");
+		while(rough.contains(" "))
+			rough = rough.replace(" ", "");
 		rough = rough.replace("\"", "");
 		rough = rough.replace("(", "");
 		rough = rough.replace(")", "");
+		rough = rough.replace(",", "");
+		rough = rough.replace(":", "");
+		rough = rough.replace("^", "");
+		rough = rough.replace(";", "");
+		rough = rough.replaceAll("\t", "");
 		return rough;
 	}
 
@@ -119,6 +126,7 @@ public class Screen {
 		in = new BufferedReader(new InputStreamReader(z.openStream()));
 		return in;
 	}
+	
 	public static String parse(BufferedReader b) throws IOException{
 		String htmlLine;
 		StringBuilder massive = new StringBuilder();
@@ -144,18 +152,15 @@ public class Screen {
 		
 		StringBuilder resort = new StringBuilder();
 
-		ArrayList<String> allList = (ArrayList<String>) t.getKeys();
-		int far = 0;
-		for (int i = 0; i < t.size(); i++) {
-			for (int j = 0; j < t.bucketSize(i); j++) {
-				String myWord;
-				String myValue;
-				myWord = format(allList.get(far));
-				myValue = t.get(myWord);
-				resort.append(myWord + " " + myValue + "\n");
-				far++;
-			}
+		List<String> allList = t.getKeys();
+		for (int i = 0; i < allList.size(); i++){
+			String myWord;
+			String myValue;
+			myWord = allList.get(i);
+			myValue = t.get(myWord);
+			resort.append(format(myWord) + " " + myValue + "\n");
 		}
+		
 		String finalSort = resort.toString();
 		return finalSort;
 
@@ -173,6 +178,7 @@ public class Screen {
 			createErrorLabel(q);
 			
 		}
+		contentPane = new JPanel();
 		wordFrequencyTextArea = new JTextArea(finalSort);
 		wordFrequencyTextArea.setFont(new Font("Serif", Font.ITALIC, 16));
 		wordFrequencyTextArea.setLineWrap(true);
@@ -181,5 +187,8 @@ public class Screen {
 		textAreaScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		textAreaScrollPane.setPreferredSize(new Dimension(400, 600));
 		contentPane.add(textAreaScrollPane);
+		
+		frame.setContentPane(contentPane);
+		frame.pack();
 	}
 }
