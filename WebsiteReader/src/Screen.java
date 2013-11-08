@@ -140,13 +140,29 @@ public class Screen {
 		ArrayList<String> fixedText = new ArrayList<String>();
 		fixedText = (ArrayList<String>) Splitter.split(massiveString);
 		w = WordCounter.reader(fixedText, w);
-		ArrayList<KeyValuePairs> x;
+		ArrayList<KeyValuePairs> x = new ArrayList() ;
 		for(int i = 0; i < w.getKeys().size(); i++){
 			String key = w.getKeys().get(i);
 			String value = Integer.toString(key.length());
+			KeyValuePairs kvp = new KeyValuePairs(key,value);
+			x.add(kvp);
 		}
 		
-		//ArrayList<KeyValuePairs> x = (ArrayList<KeyValuePairs>) BubbleSort.sort(w.getKeyValuePairs());
+		//known
+		x= (ArrayList<KeyValuePairs>) BubbleSort.sort(x);
+		
+		
+		StringBuilder resort = new StringBuilder();
+		for (int i = 0; i < x.size(); i++){
+			String myWord;
+			String myValue;
+			myWord = x.get(i).getKey();
+			myValue = w.get(myWord);
+			resort.append(format(myWord) + " " + myValue + "\n");
+		}
+		
+		
+		/*
 		MyHashMap t = new MyHashMap(MAXCHAR);
 		for (int i = 0; i < x.size(); i++){
 			String key = x.get(i).getKey();
@@ -162,9 +178,10 @@ public class Screen {
 			String myWord;
 			String myValue;
 			myWord = allList.get(i);
-			myValue = t.get(myWord);
+			myValue = w.get(myWord);
 			resort.append(format(myWord) + " " + myValue + "\n");
 		}
+		*/
 		
 		String finalSort = resort.toString();
 		return finalSort;
