@@ -140,8 +140,13 @@ public class Screen {
 		ArrayList<String> fixedText = new ArrayList<String>();
 		fixedText = (ArrayList<String>) Splitter.split(massiveString);
 		w = WordCounter.reader(fixedText, w);
+		ArrayList<KeyValuePairs> x;
+		for(int i = 0; i < w.getKeys().size(); i++){
+			String key = w.getKeys().get(i);
+			String value = Integer.toString(key.length());
+		}
 		
-		ArrayList<KeyValuePairs> x = (ArrayList<KeyValuePairs>) BubbleSort.sort(w.getKeyValuePairs());
+		//ArrayList<KeyValuePairs> x = (ArrayList<KeyValuePairs>) BubbleSort.sort(w.getKeyValuePairs());
 		MyHashMap t = new MyHashMap(MAXCHAR);
 		for (int i = 0; i < x.size(); i++){
 			String key = x.get(i).getKey();
