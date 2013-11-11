@@ -42,10 +42,22 @@ public class Splitter {
 		}
 		String[] pre = x.split(" ");
 		for (int i = 0; i < pre.length; i++){
-			sorted.add(pre[i]);
+			sorted.add(format(pre[i].toLowerCase()));
 		}
 		return sorted;
 	}
-	
+	public static String format(String rough) {
+		rough = rough.replace(" ", "");
+		rough = rough.replace("\"", "");
+		rough = rough.replace("(", "");
+		rough = rough.replace(")", "");
+		rough = rough.replace(",", "");
+		rough = rough.replace(":", "");
+		rough = rough.replace("^", "");
+		rough = rough.replace(";", "");
+		rough = rough.replaceAll("\t", "");
+		rough = rough.replace(".", "");
+		return rough;
+	}
 
 }

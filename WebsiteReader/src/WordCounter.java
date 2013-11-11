@@ -49,10 +49,8 @@ public class WordCounter {
 		if (input.equals("-")){
 			return false;
 		}
-		if (input.length() > 5){
-			if (input.substring(0, 4).equals("Links")){
-				return false;
-			}
+		if (input.equals("")){
+			return false;
 		}
 		
 		return true;

@@ -102,19 +102,7 @@ public class Screen {
 		frame.setVisible(true);
 	}
 
-	public static String format(String rough) {
-		while(rough.contains(" "))
-			rough = rough.replace(" ", "");
-		rough = rough.replace("\"", "");
-		rough = rough.replace("(", "");
-		rough = rough.replace(")", "");
-		rough = rough.replace(",", "");
-		rough = rough.replace(":", "");
-		rough = rough.replace("^", "");
-		rough = rough.replace(";", "");
-		rough = rough.replaceAll("\t", "");
-		return rough;
-	}
+	
 
 	public static void setURL(String url) throws MalformedURLException {	
 		URLstring = url;
@@ -158,7 +146,7 @@ public class Screen {
 			String myValue;
 			myWord = x.get(i).getKey();
 			myValue = w.get(myWord);
-			resort.append(format(myWord) + " " + myValue + "\n");
+			resort.append((myWord) + " " + myValue + "\n");
 		}
 		
 		
