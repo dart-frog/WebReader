@@ -25,7 +25,9 @@ public class WordCounter {
 			}
 			else{
 				if(isLegit(list.get(i))){ 
-				write.set(list.get(i), "1");
+				//String low = list.get(i).toLowerCase();
+				String low = list.get(i);
+				write.set(low, "1");
 				}
 			}
 		}

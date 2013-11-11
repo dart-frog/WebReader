@@ -208,8 +208,13 @@ public class Screen {
 		JScrollPane textAreaScrollPane = new JScrollPane(wordFrequencyTextArea);
 		textAreaScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		textAreaScrollPane.setPreferredSize(new Dimension(400, 600));
-		contentPane.add(textAreaScrollPane);
 		
+		try {
+			createCards();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		contentPane.add(textAreaScrollPane);
 		frame.setContentPane(contentPane);
 		frame.pack();
 	}
