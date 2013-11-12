@@ -6,7 +6,10 @@ import java.util.List;
 public class WordCounter {
 
 	/**
-	 * @param args
+	 * counts the number of words in a hashmap
+	 * @param list words that you would like to count
+	 * @param write a hashmap to store counts
+	 * @return a counted hashmap
 	 */
 	public static MyHashMap reader(ArrayList<String> list, MyHashMap write) {
 		String old = "";
@@ -36,7 +39,7 @@ public class WordCounter {
 		
 
 	}
-	public static boolean isLegit(String input){
+	private static boolean isLegit(String input){
 		char[] nums = {'0','1','2','3','4','5','6','7','8','9'};
 		for	(int j = 0; j< input.length(); j++){
 			for (int i = 0; i< nums.length; i++){

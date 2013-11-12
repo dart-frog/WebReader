@@ -4,22 +4,11 @@ import java.util.List;
 
 public class Splitter {
 	
-/*	public static List<String> split (String x){
-		String[] xs = x.split("<");
-		ArrayList<String> sorted = new ArrayList();	
-		for (int i = 0; i < xs.length; i++){
-			if(!xs[i].isEmpty()){
-				boolean isTrash = false;
-				for (int j = 0; j < xs[i].length(); j++){
-					if (xs[i].charAt(j) == '>'){
-						xs[i]
-						
-					}
-				}
-			}
-		}
-		return sorted;
-	}*/
+	/**
+	 * Splits a line into words and removes html tags
+	 * @param the line of html you would like to split 
+	 * @return A list of words with out the html tags
+	 */
 	public static List<String> split (String x){
 		List<String> sorted = new ArrayList<String>();
 		int d = 0;

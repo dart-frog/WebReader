@@ -34,7 +34,10 @@ public class Screen {
 	private JTextField inputTextField;
 	private JTextArea wordFrequencyTextArea;
 	private static JFrame frame;
-
+	/**
+	 * creates a input box and a enter button
+	 * @throws IOException
+	 */
 	public void createCards() throws IOException {
 		JPanel inputPanel = new JPanel();
 		inputTextField = new JTextField();
@@ -91,7 +94,10 @@ public class Screen {
 		});
 
 	}
-
+	/**
+	 * creates the frame and the components
+	 * @throws IOException
+	 */
 	public static void setUp() throws IOException {
 		frame = new JFrame("LeaderBoard");
 		// frame.setBounds(50, 50, 600, 400);
@@ -103,18 +109,32 @@ public class Screen {
 	}
 
 	
-
+	/**
+	 * takes a string and updates the global url
+	 * @param url the url in string form
+	 * @throws MalformedURLException
+	 */
 	public static void setURL(String url) throws MalformedURLException {	
 		URLstring = url;
 		z = new URL(URLstring);
 			
 	}
+	/**
+	 * creates a new buffer reader 
+	 * @return buffer reafer
+	 * @throws IOException
+	 */
 	public static BufferedReader buff() throws IOException{
 		BufferedReader in;
 		in = new BufferedReader(new InputStreamReader(z.openStream()));
 		return in;
 	}
-	
+	/**
+	 * turns a url 
+	 * @param b
+	 * @return
+	 * @throws IOException
+	 */
 	public static String parse(BufferedReader b) throws IOException{
 		String htmlLine;
 		StringBuilder massive = new StringBuilder();
@@ -150,35 +170,23 @@ public class Screen {
 		}
 		
 		
-		/*
-		MyHashMap t = new MyHashMap(MAXCHAR);
-		for (int i = 0; i < x.size(); i++){
-			String key = x.get(i).getKey();
-			String value = x.get(i).getValue();
-			t.set(key,value);
-		}
 		
-		
-		StringBuilder resort = new StringBuilder();
-
-		List<String> allList = t.getKeys();
-		for (int i = 0; i < allList.size(); i++){
-			String myWord;
-			String myValue;
-			myWord = allList.get(i);
-			myValue = w.get(myWord);
-			resort.append(format(myWord) + " " + myValue + "\n");
-		}
-		*/
 		
 		String finalSort = resort.toString();
 		return finalSort;
 
 	}
+	/** 
+	 * creates an error label
+	 * @param the error message you would like to display
+	 */
 	public void createErrorLabel(String e){
 		JLabel x = new JLabel(e);
 		contentPane.add(x);
 	}
+	/**
+	 * Displays the text box with the counted words
+	 */
 	public void action() {
 		String finalSort = null;
 		try {
